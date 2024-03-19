@@ -1,0 +1,14 @@
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\bin\Debug\net8.0\TPR.exe
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\bin\Debug\net8.0\TPR.deps.json
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\bin\Debug\net8.0\TPR.runtimeconfig.json
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\bin\Debug\net8.0\TPR.dll
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\bin\Debug\net8.0\TPR.pdb
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\TPR.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\TPR.AssemblyInfoInputs.cache
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\TPR.AssemblyInfo.cs
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\TPR.csproj.CoreCompileInputs.cache
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\TPR.dll
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\refint\TPR.dll
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\TPR.pdb
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\TPR.genruntimeconfig.cache
+C:\Users\WaNTeD\RiderProjects\TPR\TPR\obj\Debug\net8.0\ref\TPR.dll
