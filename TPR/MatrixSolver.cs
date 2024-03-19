@@ -6,7 +6,7 @@ public static class MatrixSolver
     
     public static void Solve(double[][] matrix)
     {
-        matrix.DisplayMatrix(value => $"{value:0.00}");
+        matrix.DisplayMatrix();
         var comparisionMatrix = EvaluatComparisionMatrix(matrix);
         comparisionMatrix.DisplayMatrix(value => value == ComparisionMatrixValueType.None ? "-" : value.ToString());
         GetBinaryClass(comparisionMatrix, matrix);

@@ -2,7 +2,12 @@ namespace TPR;
 
 public static class MatrixUtils
 {
-    public static void DisplayMatrix<T>(this T[][] matrix, Func<T, string>? customParser = null)
+    public static void DisplayMatrix(this IEnumerable<IEnumerable<double>> matrix)
+    {
+        DisplayMatrix(matrix, value => $"{value:0.00}");
+    }
+    
+    public static void DisplayMatrix<T>(this IEnumerable<IEnumerable<T>> matrix, Func<T, string>? customParser = null)
     {
         foreach (var rowArray in matrix)
         {
