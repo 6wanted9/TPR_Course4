@@ -8,11 +8,19 @@ public static class MatrixCombiner
         ProcessMatrices(matrices, Math.Max).DisplayMatrix();
     }
     
-    public static double[][] IntersectMatrices(List<double[][]> matrices)
+    public static double[] IntersectVectors(List<double[]> vectors)
     {
-        Console.WriteLine("Intersect of the matrices:");
+        return IntersectMatrices(vectors.Select(vector => new [] { vector }).ToList(), true).First();
+    }
+    
+    public static double[][] IntersectMatrices(List<double[][]> matrices, bool disableDefaultMessage = false)
+    {
         var intersect = ProcessMatrices(matrices, Math.Min);
-        intersect.DisplayMatrix();
+        if (!disableDefaultMessage)
+        {
+            Console.WriteLine("Intersect of the matrices:");
+            intersect.DisplayMatrix();
+        }
 
         return intersect;
     }
@@ -64,16 +72,19 @@ public static class MatrixCombiner
         alphaLevel.DisplayMatrix();
     }
     
-    public static double[][] BuildStrongAdvantageRelation(double[][] matrix)
+    public static double[][] BuildStrongAdvantageRelation(double[][] matrix, bool disableDefaultMessage = false)
     {
-        Console.WriteLine($"Strong advantage relation");
         var relation = matrix.Select((row, x) => row.Select((value, y) =>
         {
             var diffWithMirrorValue = value - matrix[y][x];
             return diffWithMirrorValue > 0 ? diffWithMirrorValue : 0;
         }).ToArray()).ToArray();
         
-        relation.DisplayMatrix();
+        if (!disableDefaultMessage)
+        {
+            Console.WriteLine($"Strong advantage relation");
+            relation.DisplayMatrix();
+        }
 
         return relation;
     }
@@ -126,7 +137,17 @@ public static class MatrixCombiner
         return relationMaxColumnsValues.Select(value => 1 - value);
     }
     
-    private static double[][] ProcessMatrices(List<double[][]> matrices, Func<double, double, double> comparator)
+    public static string GetSolution(IEnumerable<double> fuzzySubset,double maxFuzzySubsetValue)
+    {
+        var solution = fuzzySubset
+            .Select((value, index) => (value, index))
+            .Where(data => data.value == maxFuzzySubsetValue).Select(data => data.index + 1)
+            .ToArray();
+        
+        return string.Join(", ", solution.Select(index => $"u{index}"));
+    }
+    
+    public static double[][] BuildConvexConvolutionOfRelations(List<double[][]> matrices, List<double> weights)
     {
         var size = matrices[0].Length;
         var result = new double[size][];
@@ -134,6 +155,23 @@ public static class MatrixCombiner
         {
             result[i] = new double[size];
             for (var j = 0; j < size; j++)
+            {
+                result[i][j] = matrices.Select((matrix, index) => matrix[i][j] * weights[index]).Sum();
+            }
+        }
+
+        return result;
+    }
+    
+    private static double[][] ProcessMatrices(List<double[][]> matrices, Func<double, double, double> comparator)
+    {
+        var cols = matrices[0].Length;
+        var rows = matrices[0][0].Length;
+        var result = new double[cols][];
+        for (var i = 0; i < cols; i++)
+        {
+            result[i] = new double[rows];
+            for (var j = 0; j < rows; j++)
             {
                 result[i][j] = CompareAllMatrices(matrices, comparator, i, j);
             }
